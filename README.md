@@ -3,6 +3,17 @@
 Modern hologram API written in Kotlin.
 
 Usage:
+
+```kotlin
+repositories {
+    maven { setUrl("https://jitpack.io/") }
+}
+
+dependencies {
+    implementation("com.github.rqbik", "QologramAPI", "1.0.1")
+}
+```
+
 ```kotlin
 class MyPlugin : JavaPlugin(), Listener {
     override fun onEnable() {
@@ -13,7 +24,10 @@ class MyPlugin : JavaPlugin(), Listener {
     companion object {
         fun createHologram(player: Player, location: Location) {
             // A simple one line hologram
-            val qologram = Qologram(player, location, "Hello world!")
+            val hologram = Qologram(player, location, "Hello world!")
+
+            // Show hologram
+            hologram.show()
 
             // A more complex multiline hologram
             val multilineHologram = MultilineQologram(player, location) {
@@ -36,7 +50,10 @@ class MyPlugin : JavaPlugin(), Listener {
                 onInteract { event ->
                     event.player.sendMessage("You clicked on hologram with text: ${event.line.text}")
                 }
-            }
+            // Build hologram
+            }.build()
+
+            multilineHologram.show()
 
             // An even more complex _multipage_ hologram!
             val multipageHologram = MultipageQologram(player, location) {
@@ -80,7 +97,9 @@ class MyPlugin : JavaPlugin(), Listener {
                     if (event.interactType == InteractType.LEFT_CLICK)
                         event.player.sendMessage("Hey! Don't attack holograms. They have feelings too!")
                 }
-            }
+            }.build()
+
+            multipageHologram.show()
         }
     }
 }
