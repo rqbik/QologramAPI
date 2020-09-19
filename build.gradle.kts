@@ -9,7 +9,7 @@ version = "1.0-SNAPSHOT"
 repositories {
     mavenLocal()
     jcenter()
-    maven { setUrl("https://gitlab.com/XjCyan1de/maven-repo") }
+    maven("https://gitlab.com/XjCyan1de/maven-repo/-/raw/master/")
 }
 
 dependencies {
