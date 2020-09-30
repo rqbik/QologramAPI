@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib"))
-    compileOnly("com.destroystokyo.paper", "paper", "1.16.2-R0.1-SNAPSHOT")
+    compileOnly("com.destroystokyo.paper", "paper", "1.16.3-R0.1-SNAPSHOT")
 }
 
 tasks {
