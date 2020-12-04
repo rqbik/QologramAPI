@@ -1,6 +1,6 @@
 package com.github.rqbik.qologram.event
 
-import net.minecraft.server.v1_16_R2.PacketPlayInUseEntity
+import net.minecraft.server.v1_16_R3.PacketPlayInUseEntity
 
 enum class InteractType {
     RIGHT_CLICK,

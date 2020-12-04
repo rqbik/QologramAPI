@@ -2,9 +2,9 @@ package com.github.rqbik.qologram.general
 
 import com.github.rqbik.qologram.QologramAPI
 import com.github.rqbik.qologram.utils.handle
-import net.minecraft.server.v1_16_R2.*
+import net.minecraft.server.v1_16_R3.*
 import org.bukkit.Location
-import org.bukkit.craftbukkit.v1_16_R2.util.CraftChatMessage
+import org.bukkit.craftbukkit.v1_16_R3.util.CraftChatMessage
 import org.bukkit.entity.Player
 
 open class Qologram(

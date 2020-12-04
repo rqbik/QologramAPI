@@ -10,7 +10,7 @@ import com.github.rqbik.qologram.general.MultilineQologram
 import com.github.rqbik.qologram.general.MultipageQologram
 import com.github.rqbik.qologram.general.Qologram
 import io.netty.channel.Channel
-import net.minecraft.server.v1_16_R2.PacketPlayInUseEntity
+import net.minecraft.server.v1_16_R3.PacketPlayInUseEntity
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 
