@@ -73,6 +73,10 @@ open class Qologram(
         player.handle.playerConnection.sendPacket(packet)
     }
 
+    fun setLocation(
+        location: Location
+    ) = setLocation(location.x, location.y, location.z, location.yaw, location.pitch)
+
     private fun sendMetadata() {
         val packetMeta = PacketPlayOutEntityMetadata(
             id,

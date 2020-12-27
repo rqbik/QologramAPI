@@ -22,15 +22,32 @@ open class MultilineQologram(
     var location = location
         private set
 
-    fun setLocation(newLocation: Location, updateY: Boolean = true)  {
+    fun setLocation(location: Location, updateY: Boolean = true) =
+        setLocation(location.x, location.y, location.z, location.yaw, location.pitch, updateY)
+
+    fun setLocation(
+        x: Double = location.x,
+        y: Double = location.y,
+        z: Double = location.z,
+        yaw: Float = location.yaw,
+        pitch: Float = location.pitch,
+        updateY: Boolean = true
+    ) {
         _lines.forEachIndexed { idx, it ->
             it.setLocation(
-                newLocation.x,
-                if (updateY) newLocation.y + idx * margin else newLocation.y + (it.location.y - location.y),
-                newLocation.z
+                x,
+                if (updateY) y + idx * margin else y + (it.location.y - location.y),
+                z
             )
         }
-        location = newLocation
+
+        location.apply {
+            this.x = x
+            this.y = y
+            this.z = z
+            this.yaw = yaw
+            this.pitch = pitch
+        }
     }
 
     var margin = DEFAULT_MARGIN
@@ -71,6 +88,8 @@ open class MultilineQologram(
             if (minLength != 0) it.text = padCenter(it.text, minLength)
             _lines.add(it)
         }
+
+    fun addLines(lines: Iterable<String>) = lines.forEach(::addLine)
 
     fun removeLine(line: Qologram, updateMargin: Boolean = true) = line.hide().also {
         _lines.remove(line)

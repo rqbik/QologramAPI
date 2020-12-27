@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.rqbik", "QologramAPI", "1.0.5")
+    implementation("com.github.rqbik", "QologramAPI", "1.0.7")
 }
 ```
 

@@ -27,11 +27,14 @@ jobs:
           release_name: Release ${{ github.ref }}
           body: |
             #### Release ${{ steps.get_tag.outputs.tag }}
+
             Dependency:
+
             ```kotlin
             repositories {
                 maven { setUrl("https://jitpack.io/") }
             }
+
             dependencies {
                 implementation("com.github.rqbik", "QologramAPI", "${{ steps.get_tag.outputs.tag }}")
             }

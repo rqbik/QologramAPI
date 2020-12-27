@@ -20,15 +20,17 @@ open class MultipageQologram(val player: Player, location: Location, val builder
     var location = location
         private set
 
-    fun setLocation(location: Location, updateY: Boolean = true)  {
-        pages.forEach { it.setLocation(location, updateY) }
-    }
+    fun setLocation(x: Double, y: Double, z: Double, yaw: Float, pitch: Float, updateY: Boolean = true) =
+        pages.forEach { it.setLocation(x, y, z, yaw, pitch, updateY) }
+
+    fun setLocation(location: Location, updateY: Boolean = true) =
+        setLocation(location.x, location.y, location.z, location.yaw, location.pitch, updateY)
 
     fun addPage(builder: MultilineQologram.() -> Unit = {}) =
         pages.add(MultilineQologram(player, location, builder).build())
 
-    fun show() { pages[currentPage].show() }
-    fun hide() { pages[currentPage].hide() }
+    fun show() = pages[currentPage].show() 
+    fun hide() = pages[currentPage].hide() 
 
     internal var handler: InteractEventHandler<MultipageQologramInteractEvent>? = null
 
