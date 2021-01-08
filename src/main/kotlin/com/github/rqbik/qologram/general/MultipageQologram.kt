@@ -7,7 +7,8 @@ import org.bukkit.Location
 import org.bukkit.entity.Player
 
 open class MultipageQologram(val player: Player, location: Location, val builder: MultipageQologram.() -> Unit) {
-    val pages  = mutableListOf<MultilineQologram>()
+    private var built: Boolean = false
+    val pages = mutableListOf<MultilineQologram>()
 
     var currentPage = 0
         set(value) {
@@ -29,7 +30,11 @@ open class MultipageQologram(val player: Player, location: Location, val builder
     fun addPage(builder: MultilineQologram.() -> Unit = {}) =
         pages.add(MultilineQologram(player, location, builder).build())
 
-    fun show() = pages[currentPage].show() 
+    fun show() {
+        if (!built) build()
+        pages[currentPage].show()
+    }
+
     fun hide() = pages[currentPage].hide() 
 
     internal var handler: InteractEventHandler<MultipageQologramInteractEvent>? = null
@@ -39,5 +44,6 @@ open class MultipageQologram(val player: Player, location: Location, val builder
     fun build() = this.also {
         builder(this)
         QologramAPI.multipageQolograms.add(this)
+        built = true
     }
 }

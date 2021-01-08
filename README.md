@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.rqbik", "QologramAPI", "1.0.7")
+    implementation("com.github.rqbik", "QologramAPI", "1.0.8")
 }
 ```
 
@@ -50,8 +50,7 @@ class MyPlugin : JavaPlugin(), Listener {
                 onInteract { event ->
                     event.player.sendMessage("You clicked on hologram with text: ${event.line.text}")
                 }
-            // Build hologram
-            }.build()
+            }
 
             multilineHologram.show()
 
@@ -97,7 +96,7 @@ class MyPlugin : JavaPlugin(), Listener {
                     if (event.interactType == InteractType.LEFT_CLICK)
                         event.player.sendMessage("Hey! Don't attack holograms. They have feelings too!")
                 }
-            }.build()
+            }
 
             multipageHologram.show()
         }

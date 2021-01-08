@@ -15,6 +15,7 @@ open class MultilineQologram(
     private val builder: MultilineQologram.() -> Unit = {}
 ) {
     private val _lines = mutableListOf<Qologram>()
+    private var built: Boolean = false
 
     val lines
         get() = _lines.toList()
@@ -105,12 +106,17 @@ open class MultilineQologram(
 
     fun onInteract(handler: InteractEventHandler<MultilineQologramInteractEvent>) { this.handler = handler }
 
-    fun show() = _lines.forEach { it.show() }
+    fun show() {
+        if (!built) build()
+        _lines.forEach { it.show() }
+    }
+
     fun hide() = _lines.forEach { it.hide() }
 
     open fun build() = this.also {
         builder(this)
         QologramAPI.multilineQolograms.add(this)
+        built = true
     }
 
     private fun updateLineMargin() = _lines.forEachIndexed { idx, it ->
